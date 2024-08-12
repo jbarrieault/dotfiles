@@ -1,0 +1,13 @@
+[core]
+  editor = "code --wait"
+  excludesFile = ~/.gitignore_global
+[fetch]
+  prune = true
+[pull]
+  rebase = true
+[push]
+  default = current
+  autoSetupRemote = true
+[user]
+  name = Jacob Barrieault
+  email = jacob.barrieault@gmail.com

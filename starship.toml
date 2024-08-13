@@ -1,0 +1,35 @@
+# ~/.config/starship.toml
+
+# Styles assume use of a Nerd Font
+
+add_newline = false
+
+[line_break]
+disabled = true
+
+# The character to show before each prompt line.
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[✗](bold red)"
+
+# Enable the directory module
+[directory]
+style = "cyan"
+
+# Enable the git branch module
+[git_branch]
+symbol = "🌱 "
+format = "[$branch]($style) "
+style = "italic #AF8700"
+
+# Enable the git status module
+[git_status]
+untracked = '?'
+modified = '!'
+
+[hostname]
+ssh_only = true
+
+[username]
+style_user = "bold dimmed green"
+show_always = false

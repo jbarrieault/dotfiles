@@ -10,7 +10,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # awscli                               https://github.com/aws/aws-cli
 # bat       (pretty cat)               https://github.com/sharkdp/bat
 # fastfetch (cute system info)         https://github.com/fastfetch-cli/fastfetch
-# fish       (shell)                    https://fishshell.com/
 # ffmpeg                               https://www.ffmpeg.org
 # fzf       (fuzzy finder)              https://github.com/junegunn/fzf
 # git                                  https://github.com/git/git
@@ -27,9 +26,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # tldr      (simplified man pages)      https://tldr.sh/
 # tmux                                 https://github.com/tmux/tmux/wiki
 # wget      (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat fastfetch fish ffmpeg fzf git go llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
+brew install awscli bat fastfetch ffmpeg fzf git go llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
 
-brew install --cask firefox google-chrome visual-studio-code zoom
+brew install --cask firefox google-chrome iterm visual-studio-code zoom
 
 # start mysql now and restart at login
 brew services start mysql
@@ -52,5 +51,7 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer
 gem install bundler
 
 curl -fsSL https://bun.sh/install | bash
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 xcode-select --install

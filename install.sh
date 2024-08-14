@@ -14,6 +14,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # fzf       (fuzzy finder)              https://github.com/junegunn/fzf
 # git                                  https://github.com/git/git
 # go                                   https://github.com/golang/go
+# jq        (JSON processor)           https://jqlang.github.io/jq/
 # llvm      (needed for ruby installs) https://www.llvm.org/
 # lsd       (ls improvement)           https://github.com/lsd-rs/lsd
 # maccy     (clipboard manager)        https://github.com/p0deje/Maccy
@@ -26,7 +27,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # tldr      (simplified man pages)      https://tldr.sh/
 # tmux                                 https://github.com/tmux/tmux/wiki
 # wget      (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat fastfetch ffmpeg fzf git go llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
+brew install awscli bat fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
 
 brew install --cask firefox google-chrome iterm visual-studio-code zoom
 

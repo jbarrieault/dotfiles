@@ -29,7 +29,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # wget      (better web getter)        https://www.gnu.org/software/wget/
 brew install awscli bat fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
 
-brew install --cask firefox google-chrome iterm visual-studio-code zoom
+brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code zoom
 
 # start mysql now and restart at login
 brew services start mysql
@@ -49,7 +49,7 @@ asdf global nodejs latest
 
 # Install rbenv to manage Ruby versions
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
-gem install bundler
+gem install bundler rails
 
 curl -fsSL https://bun.sh/install | bash
 

@@ -56,3 +56,6 @@ function gh() {
   giturl=$giturl/tree/$branch
   open $giturl
 }
+
+# the directory go packages are installed to
+export PATH=$PATH:$(go env GOPATH)/bin

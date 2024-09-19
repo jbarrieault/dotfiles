@@ -20,6 +20,15 @@ function glogs() {
   tail -f log/development.log | grep --line-buffered $1
 }
 
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+# For compilers to find openjdk you may need to set:
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+# per `brew install openjdk`'s suggestion:
+# "If you need to have openjdk first in your PATH, run:""
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 alias ga="git add"
 alias co="git checkout"
 alias gs="git status"

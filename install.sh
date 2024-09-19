@@ -20,6 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # maccy     (clipboard manager)        https://github.com/p0deje/Maccy
 # mysql                                https://dev.mysql.com/doc/
 # nmap                                 https://github.com/nmap/nmap
+# openjdk   (Java runtime)             https://openjdk.org/
 # postgresql                           https://github.com/postgresql/postgresql
 # python                               https://www.python.org
 # redis                                https://redis.io/docs/latest/
@@ -27,7 +28,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # tldr      (simplified man pages)      https://tldr.sh/
 # tmux                                 https://github.com/tmux/tmux/wiki
 # wget      (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap postgresql python starship tldr tmux wget
+brew install awscli bat fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap openjdk postgresql python starship tldr tmux wget
 
 brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code zoom
 
@@ -50,6 +51,10 @@ asdf global nodejs latest
 # Install rbenv to manage Ruby versions
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 gem install bundler rails
+
+# symlink openjdk Java runtime into the place MacOS's java wrapper looks for runtimes
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
 
 curl -fsSL https://bun.sh/install | bash
 

@@ -1,5 +1,3 @@
-# ~/.config/starship.toml
-
 # Styles assume use of a Nerd Font
 
 add_newline = false
@@ -33,3 +31,9 @@ ssh_only = true
 [username]
 style_user = "bold dimmed green"
 show_always = false
+
+[aws]
+disabled = true
+
+[golang]
+disabled = true

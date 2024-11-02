@@ -30,7 +30,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # wget      (better web getter)        https://www.gnu.org/software/wget/
 brew install awscli bat fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap openjdk postgresql python starship tldr tmux wget
 
-brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code zoom
+brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code wireshark zoom
 
 # start mysql now and restart at login
 brew services start mysql

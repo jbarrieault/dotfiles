@@ -1,6 +1,7 @@
 # ~/.zshrc
 
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 
 export EDITOR="code --wait"
 

@@ -24,11 +24,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # postgresql                           https://github.com/postgresql/postgresql
 # python                               https://www.python.org
 # redis                                https://redis.io/docs/latest/
+# ripgrep                              https://github.com/BurntSushi/ripgrep
 # starship  (shell prompt)             https://starship.rs/
-# tldr      (simplified man pages)      https://tldr.sh/
+# tldr      (simplified man pages)     https://tldr.sh/
 # tmux                                 https://github.com/tmux/tmux/wiki
 # wget      (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap openjdk postgresql python starship tldr tmux wget
+brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap openjdk postgresql python ripgrep starship tldr tmux wget
 
 brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code wireshark zoom
 

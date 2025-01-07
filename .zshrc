@@ -4,6 +4,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
 export EDITOR="code --wait"
+export PAGER="bat --paging=always"
 
 . /Users/jbarrieault/.asdf/asdf.sh
 

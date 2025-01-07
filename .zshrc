@@ -5,6 +5,7 @@ eval "$(direnv hook zsh)"
 
 export EDITOR="code --wait"
 export PAGER="bat --paging=always"
+export MANPAGER="sh -c 'col -bx | bat --paging=always --language=man'"
 
 . /Users/jbarrieault/.asdf/asdf.sh
 

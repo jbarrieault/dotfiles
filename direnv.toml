@@ -1,0 +1,6 @@
+# ~/.config/direnv/direnv.toml
+
+[global]
+# https://direnv.net/man/direnv.toml.1.html#codehideenvdiffcode 
+hide_env_diff = true
+

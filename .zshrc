@@ -71,3 +71,11 @@ function gh() {
 
 # the directory go packages are installed to
 export PATH=$PATH:$(go env GOPATH)/bin
+
+### Bun contibution setup
+# puts clang-18 in PATH, required
+# path+="$(brew --prefix llvm@18)/bin"
+
+# bun-debug is placed here by Bun's 'zig build'
+# path+="$HOME/oss/bun/build/debug"
+### END - Bun contribution setup

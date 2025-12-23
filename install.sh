@@ -20,6 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # maccy     (clipboard manager)        https://github.com/p0deje/Maccy
 # mysql                                https://dev.mysql.com/doc/
 # nmap                                 https://github.com/nmap/nmap
+# nvim                                 https://lazy.folke.io/
 # openjdk   (Java runtime)             https://openjdk.org/
 # postgresql                           https://github.com/postgresql/postgresql
 # python                               https://www.python.org
@@ -29,7 +30,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # tldr      (simplified man pages)     https://tldr.sh/
 # tmux                                 https://github.com/tmux/tmux/wiki
 # wget      (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap openjdk postgresql python ripgrep starship tldr tmux wget
+brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap nvim openjdk postgresql python ripgrep starship tldr tmux wget
 
 brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code wireshark zoom
 

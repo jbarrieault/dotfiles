@@ -1,11 +1,4 @@
-# Neovim Configuration
+# 💤 LazyVim
 
-## Installation
-
-To use this configuration, create a symlink:
-
-```bash
-ln -s ~/dotfiles/nvim ~/.config/nvim
-```
-
-Then launch Neovim - lazy.nvim will automatically bootstrap and install plugins.
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.

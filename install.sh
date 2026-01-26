@@ -57,9 +57,13 @@ gem install bundler rails
 # symlink openjdk Java runtime into the place MacOS's java wrapper looks for runtimes
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
-
 curl -fsSL https://bun.sh/install | bash
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 xcode-select --install
+
+echo ""
+echo "To symlink your nvim and tmux configs, run:"
+echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"
+echo "  ln -s ~/dotfiles/tmux ~/.config/tmux"

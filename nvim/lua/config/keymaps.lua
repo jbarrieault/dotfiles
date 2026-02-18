@@ -6,3 +6,6 @@
 -- Bufferline navigation
 vim.api.nvim_set_keymap("n", "<leader>]", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>[", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+
+-- Copy selection to system clipboard
+vim.keymap.set("v", "<leader><C-c>", '"+y', { desc = "Copy selection to system clipboard" })

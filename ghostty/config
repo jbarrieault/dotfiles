@@ -1,3 +1,4 @@
 keybind = shift+enter=text:\n
 theme = dark:iTerm2 Solarized Dark,light:iTerm2 Solarized Light
+font-size = 18
 

@@ -65,6 +65,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 xcode-select --install
 
 echo ""
-echo "To symlink your nvim and tmux configs, run:"
+echo "To symlink your nvim, tmux, and ghostty configs, run:"
 echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"
 echo "  ln -s ~/dotfiles/tmux ~/.config/tmux"
+echo "  mkdir -p ~/.config/ghostty && ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config"

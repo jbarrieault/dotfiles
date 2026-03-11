@@ -64,8 +64,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 xcode-select --install
 
+# Back up existing .zshrc and symlink the dotfiles version
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+  mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+  echo "Existing ~/.zshrc backed up to ~/.zshrc.backup"
+fi
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+echo "Symlinked ~/dotfiles/.zshrc -> ~/.zshrc"
+
 echo ""
-echo "To symlink your nvim, tmux, and ghostty configs, run:"
+echo "To symlink your configs, run:"
 echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"
 echo "  ln -s ~/dotfiles/tmux ~/.config/tmux"
 echo "  mkdir -p ~/.config/ghostty && ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config"

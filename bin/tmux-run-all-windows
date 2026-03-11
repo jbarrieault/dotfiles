@@ -1,0 +1,156 @@
+#!/bin/bash
+
+# Check if command is provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 [--no-status] [-s <session_name>] <command> [additional_keys...]"
+  echo "Example: $0 'git status'"
+  echo "         $0 --no-status 'Escape' 'ihello' 'Escape' ':w' 'Enter'"
+  echo "         $0 -s mysession 'git status'"
+  exit 1
+fi
+
+# Parse flags
+no_status=false
+if [ "$1" = "--no-status" ]; then
+  no_status=true
+  shift
+fi
+
+# Store all remaining arguments as an array
+command_args=("$@")
+
+# Get list of tmux sessions
+sessions=$(tmux list-sessions 2>/dev/null | cut -d: -f1)
+
+if [ -z "$sessions" ]; then
+  echo "No tmux sessions found"
+  exit 1
+fi
+
+session_count=$(echo "$sessions" | wc -l)
+
+# If more than one session, require session name
+if [ "$session_count" -gt 1 ]; then
+  echo "Multiple tmux sessions found:"
+  tmux list-sessions
+  echo ""
+  echo "Please specify session name: $0 [--no-status] -s <session_name> <command> [additional_keys...]"
+  exit 1
+fi
+
+# Handle session specification
+session_name=""
+if [ "$1" = "-s" ]; then
+  if [ $# -lt 3 ]; then
+    echo "Usage: $0 [--no-status] -s <session_name> <command> [additional_keys...]"
+    exit 1
+  fi
+  session_name="$2"
+  shift 2
+  command_args=("$@")
+else
+  # Use the single session
+  session_name="$sessions"
+fi
+
+# Verify session exists
+if ! tmux has-session -t "$session_name" 2>/dev/null; then
+  echo "Session '$session_name' not found"
+  exit 1
+fi
+
+# Get list of windows in the session
+windows=$(tmux list-windows -t "$session_name" -F "#{window_index}")
+
+if [ -z "$windows" ]; then
+  echo "No windows found in session '$session_name'"
+  exit 1
+fi
+
+echo "Running command in session '$session_name':"
+echo "Command: ${command_args[*]}"
+echo ""
+
+# Execute command in each window and collect status codes
+overall_status=0
+results=()
+total_windows=$(echo "$windows" | wc -w)
+total_windows="${total_windows#"${total_windows%%[![:space:]]*}"}"
+current_window=0
+
+for window in $windows; do
+  current_window=$((current_window + 1))
+  window_name=$(tmux display-message -t "$session_name:$window" -p "#{window_name}")
+
+  if [ "$no_status" = true ]; then
+    # Just send the command without status capture - pass each argument separately
+    tmux send-keys -t "$session_name:$window" "${command_args[@]}"
+    printf "\r%-80s\r" "Window $current_window of $total_windows ($window_name)..."
+    sleep 0.2 # Brief pause to ensure command is sent
+    results+=("SUCCESS|$window|$window_name|N/A")
+  else
+    # Create a unique temp file for this window
+    temp_file="/tmp/tmux_status_${session_name}_${window}_$$"
+
+    # For status capture, we need to combine into a single command string
+    combined_command=""
+    for arg in "${command_args[@]}"; do
+      if [ -z "$combined_command" ]; then
+        combined_command="$arg"
+      else
+        combined_command="$combined_command $arg"
+      fi
+    done
+
+    # Send the command with status capture to the window
+    tmux send-keys -t "$session_name:$window" "$combined_command; echo \$? > $temp_file" C-m
+
+    # Wait for the command to complete and status file to be created
+    timeout=30
+    counter=0
+    while [ ! -f "$temp_file" ] && [ $counter -lt $timeout ]; do
+      printf "\r%-80s\r" "Window $current_window of $total_windows ($window_name)..."
+      sleep 0.5
+      counter=$((counter + 1))
+    done
+
+    if [ -f "$temp_file" ]; then
+      status_code=$(cat "$temp_file" 2>/dev/null | tr -d '\n\r')
+      rm -f "$temp_file"
+
+      if [ "$status_code" -eq 0 ] 2>/dev/null; then
+        results+=("SUCCESS|$window|$window_name|$status_code")
+      else
+        results+=("FAIL|$window|$window_name|$status_code")
+        overall_status=1
+      fi
+    else
+      # Clean up temp file if it exists but timed out
+      rm -f "$temp_file"
+      results+=("TIMEOUT|$window|$window_name|TIMEOUT")
+      overall_status=1
+    fi
+  fi
+done
+
+# Clear the progress line
+printf "\r%*s\r" 60 ""
+
+# Print table header
+printf "%-8s %-8s %-20s %-10s\n" "STATUS" "WINDOW" "NAME" "EXIT CODE"
+printf "%-8s %-8s %-20s %-10s\n" "------" "------" "----" "---------"
+
+# Print results in table format
+for result in "${results[@]}"; do
+  IFS='|' read -r status window name exit_code <<<"$result"
+  printf "%-8s %-8s %-20s %-10s\n" "$status" "$window" "$name" "$exit_code"
+done
+
+echo ""
+if [ $overall_status -eq 0 ]; then
+  echo "All commands completed successfully"
+else
+  echo "Some commands failed or timed out"
+fi
+
+exit $overall_status

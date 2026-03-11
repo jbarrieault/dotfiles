@@ -1,11 +1,20 @@
 # ~/.zshrc
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
+
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
-export EDITOR="code --wait"
+#export EDITOR="cursor --wait"
+export EDITOR="nvim"
 export PAGER="bat --paging=always"
-export MANPAGER="sh -c 'col -bx | bat --paging=always --language=man'"
+export MANPAGER="sh -c 'col -bx | bat --paging=always --language=man --wrap=never'"
+
+export GIT_MERGE_AUTOEDIT='no'
 
 . /Users/jbarrieault/.asdf/asdf.sh
 
@@ -23,15 +32,10 @@ function glogs() {
   tail -f log/development.log | grep --line-buffered $1
 }
 
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
-# For compilers to find openjdk you may need to set:
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-# per `brew install openjdk`'s suggestion:
-# "If you need to have openjdk first in your PATH, run:""
-# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# Misc aliases
+alias chat="cd $HOME/Code/chat"
 
+# Git aliases
 alias ga="git add"
 alias co="git checkout"
 alias gs="git status"
@@ -69,8 +73,32 @@ function gh() {
   open $giturl
 }
 
+# fzf with file preview
+ff() {
+  fzf --preview 'bat --style=numbers --color=always {}' "$@"
+}
+
+# fzf with preview in a given dir
+# usage: fzfd ~/Code/chat
+fzfd() {
+  local dir="${1:-.}"
+  fzf --walker=file,dir,follow,hidden --walker-root "$dir" \
+      --preview 'bat --style=numbers --color=always {}'
+}
+
 # the directory go packages are installed to
 export PATH=$PATH:$(go env GOPATH)/bin
+
+### Planning Center (PCO)
+export RBENV_ROOT=$HOME/.rbenv
+export MYSQL_PORT_3306_TCP_ADDR=127.0.0.1
+export MYSQL_READER_PORT_3306_TCP_ADDR=127.0.0.1
+export MYSQL_READER_PORT_3306_TCP_PORT=3307
+export PATH=/Users/jbarrieault/pco-box/bin:/usr/local/bin:$PATH
+if [ -x "$HOME/Code/pco/bin/pco" ]; then
+  eval "$(~/Code/pco/bin/pco init -)"
+fi
+### END - Planning Center (PCO)
 
 ### Bun contibution setup
 # puts clang-18 in PATH, required

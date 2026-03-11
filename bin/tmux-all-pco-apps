@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Create a new tmux session named 'pco-apps'
+tmux new-session -d -s pco-apps
+
+# Get list of apps from app_ports.json and create windows for each
+apps=$(jq -r 'keys[]' ~/pco-box/app_ports.json)
+
+first_window=true
+for app in $apps; do
+  app_dir="$HOME/Code/$app"
+
+  # Check if directory exists
+  if [ -d "$app_dir" ]; then
+    if [ "$first_window" = true ]; then
+      # Rename the first window and set its directory
+      tmux rename-window -t pco-apps:0 "$app"
+      tmux send-keys -t pco-apps:0 "cd '$app_dir'" Enter
+      first_window=false
+    else
+      # Create new windows for other apps
+      tmux new-window -t pco-apps -n "$app" -c "$app_dir"
+    fi
+    echo "Created window for $app in $app_dir"
+  else
+    echo "Directory $app_dir does not exist, skipping $app"
+  fi
+done
+
+# Attach to the session
+tmux attach-session -t pco-apps
+

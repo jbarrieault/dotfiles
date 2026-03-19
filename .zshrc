@@ -32,6 +32,9 @@ function glogs() {
   tail -f log/development.log | grep --line-buffered $1
 }
 
+# Shell functions
+source "$HOME/dotfiles/shell_functions/tflow.sh"
+
 # Misc aliases
 alias chat="cd $HOME/Code/chat"
 

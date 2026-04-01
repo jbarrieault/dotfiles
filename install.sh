@@ -72,6 +72,11 @@ fi
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 echo "Symlinked ~/dotfiles/.zshrc -> ~/.zshrc"
 
+# Symlink tflow into ~/.local/bin so it's on PATH and `which tflow` works
+mkdir -p "$HOME/.local/bin"
+ln -sf ~/dotfiles/shell_functions/tflow.sh "$HOME/.local/bin/tflow"
+echo "Symlinked ~/dotfiles/shell_functions/tflow.sh -> ~/.local/bin/tflow"
+
 echo ""
 echo "To symlink your configs, run:"
 echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"

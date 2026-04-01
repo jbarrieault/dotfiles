@@ -32,9 +32,6 @@ function glogs() {
   tail -f log/development.log | grep --line-buffered $1
 }
 
-# Shell functions
-source "$HOME/dotfiles/shell_functions/tflow.sh"
-
 # Misc aliases
 alias chat="cd $HOME/Code/chat"
 
@@ -59,7 +56,7 @@ function grbs() {
 }
 
 # Opens github origin remote repo page.
-function gh() {
+function gho() {
   giturl=$(git config --get remote.origin.url)
   if [ "$giturl" == "" ]
     then

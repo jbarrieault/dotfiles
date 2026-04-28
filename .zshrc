@@ -98,6 +98,7 @@ export PATH=/Users/jbarrieault/pco-box/bin:/usr/local/bin:$PATH
 if [ -x "$HOME/Code/pco/bin/pco" ]; then
   eval "$(~/Code/pco/bin/pco init -)"
 fi
+source $HOME/pco-box/env.sh
 ### END - Planning Center (PCO)
 
 ### Bun contibution setup

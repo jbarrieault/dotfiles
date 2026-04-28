@@ -31,7 +31,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # tldr                (simplified man pages)     https://tldr.sh/
 # tmux                                           https://github.com/tmux/tmux/wiki
 # wget                (better web getter)        https://www.gnu.org/software/wget/
-brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap nvim openjdk postgresql python ripgrep starship terminal-notifier tldr tmux wget
+brew install awscli bat direnv fastfetch ffmpeg fzf git go jq llvm lsd maccy mysql neovim nmap nvim openjdk postgresql python ripgrep starship terminal-notifier tldr tmux wget jbarrieault/tap/twerk
 
 brew install --cask firefox google-chrome iterm sequel-ace visual-studio-code wireshark zoom
 
@@ -71,11 +71,6 @@ if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
 fi
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 echo "Symlinked ~/dotfiles/.zshrc -> ~/.zshrc"
-
-# Symlink tflow into ~/.local/bin so it's on PATH and `which tflow` works
-mkdir -p "$HOME/.local/bin"
-ln -sf ~/dotfiles/shell_functions/tflow.sh "$HOME/.local/bin/tflow"
-echo "Symlinked ~/dotfiles/shell_functions/tflow.sh -> ~/.local/bin/tflow"
 
 echo ""
 echo "To symlink your configs, run:"

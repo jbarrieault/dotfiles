@@ -99,6 +99,7 @@ if [ -x "$HOME/Code/pco/bin/pco" ]; then
   eval "$(~/Code/pco/bin/pco init -)"
 fi
 source $HOME/pco-box/env.sh
+[ -f "$HOME/pco-box/bin/complete.zsh" ] && source "$HOME/pco-box/bin/complete.zsh"
 ### END - Planning Center (PCO)
 
 ### Bun contibution setup

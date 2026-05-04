@@ -109,3 +109,6 @@ source $HOME/pco-box/env.sh
 # bun-debug is placed here by Bun's 'zig build'
 # path+="$HOME/oss/bun/build/debug"
 ### END - Bun contribution setup
+
+# cloud-agent shell completion
+command -v cloud-agent >/dev/null 2>&1 && eval "$(cloud-agent completion print zsh)"

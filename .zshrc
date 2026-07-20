@@ -9,14 +9,24 @@ export PATH=$PATH:$HOME/.local/bin
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
+# zsh binds a lone Escape to vi-cmd-mode by default even without vi keybindings enabled.
+# Unbind it so double-tapping Esc doesn't drop the shell into vi command mode.
+bindkey -r '^['
+
+# Under tmux (TERM=tmux-256color), ^A/^B/^E/^F come unbound as self-insert instead of
+# their normal readline actions. Rebind them explicitly; harmless outside tmux since
+# these match zsh's own defaults there.
+bindkey '^A' beginning-of-line
+bindkey '^B' backward-char
+bindkey '^E' end-of-line
+bindkey '^F' forward-char
+
 #export EDITOR="cursor --wait"
 export EDITOR="nvim"
 export PAGER="bat --paging=always"
 export MANPAGER="sh -c 'col -bx | bat --paging=always --language=man --wrap=never'"
 
 export GIT_MERGE_AUTOEDIT='no'
-
-. /Users/jbarrieault/.asdf/asdf.sh
 
 # bun completions
 [ -s "/Users/jbarrieault/.bun/_bun" ] && source "/Users/jbarrieault/.bun/_bun"
@@ -95,9 +105,11 @@ export MYSQL_PORT_3306_TCP_ADDR=127.0.0.1
 export MYSQL_READER_PORT_3306_TCP_ADDR=127.0.0.1
 export MYSQL_READER_PORT_3306_TCP_PORT=3307
 export PATH=/Users/jbarrieault/pco-box/bin:/usr/local/bin:$PATH
-if [ -x "$HOME/Code/pco/bin/pco" ]; then
-  eval "$(~/Code/pco/bin/pco init -)"
+
+if command -v pco &> /dev/null; then
+  eval "$(pco init -)"
 fi
+
 source $HOME/pco-box/env.sh
 [ -f "$HOME/pco-box/bin/complete.zsh" ] && source "$HOME/pco-box/bin/complete.zsh"
 ### END - Planning Center (PCO)

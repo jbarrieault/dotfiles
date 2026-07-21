@@ -13,13 +13,16 @@ eval "$(direnv hook zsh)"
 # Unbind it so double-tapping Esc doesn't drop the shell into vi command mode.
 bindkey -r '^['
 
-# Under tmux (TERM=tmux-256color), ^A/^B/^E/^F come unbound as self-insert instead of
+# Under tmux (TERM=tmux-256color), ^A/^B/^E/^F/^K/Option+arrows come unbound instead of
 # their normal readline actions. Rebind them explicitly; harmless outside tmux since
 # these match zsh's own defaults there.
 bindkey '^A' beginning-of-line
 bindkey '^B' backward-char
 bindkey '^E' end-of-line
 bindkey '^F' forward-char
+bindkey '^K' kill-line
+bindkey '^[b' emacs-backward-word
+bindkey '^[f' emacs-forward-word
 
 #export EDITOR="cursor --wait"
 export EDITOR="nvim"

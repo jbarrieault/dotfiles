@@ -62,6 +62,9 @@ curl -fsSL https://bun.sh/install | bash
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Install herdr (terminal workspace manager for AI coding agents) https://herdr.dev
+curl -fsSL https://herdr.dev/install.sh | sh
+
 xcode-select --install
 
 # Back up existing .zshrc and symlink the dotfiles version
@@ -77,3 +80,4 @@ echo "To symlink your configs, run:"
 echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"
 echo "  ln -s ~/dotfiles/tmux ~/.config/tmux"
 echo "  mkdir -p ~/.config/ghostty && ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config"
+echo "  mkdir -p ~/.config/herdr && ln -s ~/dotfiles/herdr/config.toml ~/.config/herdr/config.toml"

@@ -1,8 +1,8 @@
 ### Shell Commands in Devbox projects
-If the current workspace has a `devbox.json`` file in its root directory that means it uses [Devbox](https://github.com/jetify-com/devbox). This means any terminal commands you run should be prefixed with `devbox run` in order to work correctly.
+If the current workspace has a `devbox.json`` file in its root directory that means it uses [Devbox](https://github.com/jetify-com/devbox). This means any terminal commands you run should be prefixed with `devbox run --pure` in order to work correctly.
 
 ### Bash and Tool calls
- - Bash commands: avoid chaining with `&&` — use separate parallel Bash calls instead. Claude Code's compound-command security check ([#16561](https://github.com/anthropics/claude-code/issues/16561)) prompts even when each component is individually allowed.
+ - Bash commands: avoid chaining with `&&` — use separate Bash calls instead. Claude Code's compound-command security check ([#16561](https://github.com/anthropics/claude-code/issues/16561)) prompts even when each component is individually allowed.
 
 ### Code Comments
 

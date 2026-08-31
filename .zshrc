@@ -47,6 +47,7 @@ function glogs() {
 
 # Misc aliases
 alias chat="cd $HOME/Code/chat"
+alias claude='claude --model "claude-opus-5[1m]"'
 
 # Git aliases
 alias ga="git add"

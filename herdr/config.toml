@@ -7,3 +7,10 @@ previous_workspace = "prefix+shift+k"
 next_workspace = "prefix+shift+j"
 previous_agent = "prefix+shift+l"
 next_agent = "prefix+shift+h"
+edit_scrollback = ""
+
+# eject the focused tab into its own workspace
+[[keys.command]]
+key = "prefix+e"
+type = "shell"
+command = "~/dotfiles/herdr/eject-tab.sh"

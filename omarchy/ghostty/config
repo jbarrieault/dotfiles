@@ -1,0 +1,8 @@
+keybind = shift+enter=text:\n
+
+# Follow whatever Omarchy system theme is active (`omarchy theme set ...`),
+# instead of a fixed theme like the mac dotfiles config uses.
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
+
+font-size = 12
+

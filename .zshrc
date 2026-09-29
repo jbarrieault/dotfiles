@@ -130,3 +130,4 @@ source $HOME/pco-box/env.sh
 command -v cloud-agent >/dev/null 2>&1 && eval "$(cloud-agent completion print zsh)"
 
 alias awslocal='AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test aws --endpoint-url=http://localhost:4566 --region=us-east-1'
+export PATH="$HOME/.local/bin:$PATH"

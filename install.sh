@@ -77,6 +77,7 @@ echo "Symlinked ~/dotfiles/.zshrc -> ~/.zshrc"
 
 echo ""
 echo "To symlink your configs, run:"
+echo "  ln -s ~/dotfiles/starship.toml ~/.config/starship.toml"
 echo "  ln -s ~/dotfiles/nvim ~/.config/nvim"
 echo "  ln -s ~/dotfiles/tmux ~/.config/tmux"
 echo "  mkdir -p ~/.config/ghostty && ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config"

@@ -14,12 +14,7 @@ Code comments are acceptable, but:
 - Use the `gh` CLI when possible.
 - When creating a GitHub pull request, always mark it as a draft.
 - After first creating a GitHub pull request, assign a relevant label for the category of change, such as `feature` or `bug`.
-- Pull request descriptions structure & style:
-  - Overall, the Pull Request title & body should describe _what_ behavior is changing, not _how_ the code was changed to accomplish the change.
-  - A `Summary` section with a brief, high-level description of the change. Be concise, 1 sentences is ideal, 2 may be needed in some cases.
-  - A `Details` section with a that provides more implementation specifics than the Summary, but still quite brief 2-3 sentences is plenty in most cases.
-  - *Optional*: For larger / more dense pull requests, you may add a `Changes` section, containing a bullet list of discrete changes made. Bullets should be very short.
-  - Do *not* add "🤖 Generated with Claude Code" to the pull request description
-- *IMPORTANT*: Once you've written the Pull Request title and body, apply an editorial pass with the goal of reducing the verbosity and detail level of the title & body. Apply the "ruthlss edits" discipline made popular by legendary music producer Rick Rubin--reducing the content to it's simplest most purest form.
+- *IMPORTANT*: When writing or revising a pull request title or body, invoke the `ruthless-pr-edit` skill. It owns the structure and the editorial standard.
+- Do *not* add "🤖 Generated with Claude Code" to the pull request description.
 
 
